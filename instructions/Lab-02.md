@@ -115,23 +115,23 @@ In this exercise, you'll perform the following tasks:
 
     ```text
     Querying AdventureWorks database
-    SELECT COUNT(*) FROM production.vproductanddescription
-    1764
+    SELECT COUNT(*) FROM product
+    504
 
-    SELECT COUNT(*) FROM purchasing.vendor
+    SELECT COUNT(*) FROM vendor
     104
 
-    SELECT COUNT(*) FROM sales.specialoffer
+    SELECT COUNT(*) FROM specialoffer
     16
 
-    SELECT COUNT(*) FROM sales.salesorderheader
+    SELECT COUNT(*) FROM salesorderheader
     31465
 
-    SELECT COUNT(*) FROM sales.salesorderdetail
+    SELECT COUNT(*) FROM salesorderdetail
     121317
 
-    SELECT COUNT(*) FROM person.person
-    19972
+    SELECT COUNT(*) FROM customer
+    19185
     ```
 
 ### Task 3: Perform an offline migration of the database to the Azure virtual machine
@@ -202,10 +202,10 @@ Now that you have an idea of the data in the adventureworks database, you can mi
 
     Verify that this query returns 16 rows. This is the same number of rows that is in the on-premises database.
 
-1. Query the number of rows in the *sales.vendor* table.
+1. Query the number of rows in the *vendor* table.
 
     ```SQL
-    SELECT COUNT(*) FROM sales.vendor;
+    SELECT COUNT(*) FROM vendor;
     ```
 
     This table should contain 104 rows.
@@ -224,9 +224,9 @@ Now that you have an idea of the data in the adventureworks database, you can mi
     | Username | azureuser |
     | Default Schema | adventureworks |
 
-1. In **Password**, type **Pa55w.rd** and click **OK**.
+1. At the password prompt, type **Pa55w.rd** and click **OK**.
 1. Click **OK** and click **Close**.
-1. Click **MySQL on Azure**
+1. On the **Database** menu, click **Connect to Database**, select **MySQL on Azure**, and then click **OK**
 1. In **adventureworks** browse the tables in the database. The tables should be the same as those in the on-premises database.
 
 ### Task 5: Reconfigure and test the sample application against the database on the Azure virtual machine
@@ -361,7 +361,6 @@ In this exercise, you'll perform the following tasks:
 1. On the **Review + create** page, click **Create**. Wait for the service to be created before continuing.
 
 1. When the service has been created, go to the page for the service in the portal, and click **Connection security**.
-
 
 1. On the **Connection security page**, set **Allow access to Azure services** to **ON**.
 
@@ -563,17 +562,17 @@ In this exercise, you'll perform the following tasks:
 
 ### Task 7: Reconfigure and test the sample application against the database in the Azure Database for MySQL
 
-1. Return to the **terminal** window.
-1. Move to the *code/mysql/AdventureWorksQueries* folder:
+1. Return to the **terminal** window on the **LON-DEV-01** virtual machine.
+1. Move to the *workshop/migration_samples/code/mysql/AdventureWorksQueries* folder:
 
    ```bash
-   cd code/mysql/AdventureWorksQueries
+   cd ~/workshop/migration_samples/code/mysql/AdventureWorksQueries
    ```
 
-1. Open the App.config file using the code editor:
+1. Open the App.config file using the nano editor:
 
     ```bash
-    code App.config
+    nano App.config
     ```
 
 1. Change the value of the **ConnectionString** setting and replace the IP address of the Azure virtual machine to **adventureworks[nnn].MySQL.database.azure.com**. Change the **User Id** to **awadmin@adventureworks[nnn]**. Change the **Password** to **Pa55w.rdDemo**. The file should look like this:
@@ -582,12 +581,12 @@ In this exercise, you'll perform the following tasks:
     <?xml version="1.0" encoding="utf-8" ?>
         <configuration>
           <appSettings>
-            <add key="ConnectionString" value="Server=adventureworks[nnn].MySQL.database.azure.com;Database=adventureworks;Port=3306;User Id=awadmin@adventureworks[nnn];Password=Pa55w.rdDemo" />
+            <add key="ConnectionString" value="Server=adventureworks[nnn].MySQL.database.azure.com;database=adventureworks;port=3306;uid=awadmin@adventureworks[nnn];password=Pa55w.rdDemo" />
           </appSettings>
         </configuration>
     ```
 
-    The application should now connect to the database running on the Azure virtual machine.
+    The application should now connect to the database running on Azure Database for MySQL.
 
 1. Save the file and close the editor.
 
@@ -596,5 +595,7 @@ In this exercise, you'll perform the following tasks:
     ```bash
     dotnet run
     ```
+    
+    The app should display the same results as before, except that it is now retrieving the data from the database running in Azure.
 
    You have now migrated your database to Azure Database for MySQL, and reconfigured your application to use the new database.
