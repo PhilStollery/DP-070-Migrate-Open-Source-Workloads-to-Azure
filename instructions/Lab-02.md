@@ -68,19 +68,19 @@ In this exercise, you'll perform the following tasks:
 
 ### Task 1: Review the on-premises database
 
-1. On the **LON-DEV-01** virtual machine running in the classroom environment, in the **Favorites** bar on the left-hand side of the screen, click **MySQLWorkbench**.
-1. In the **MySQLWorkbench** window, click **LON-DEV-01**, and click **OK**.
+1. On the **LON-DEV-01** virtual machine running in the classroom environment, in the **Favorites** bar on the left-hand side of the screen, select **MySQLWorkbench**.
+1. In the **MySQLWorkbench** window, select **LON-DEV-01**, and select **OK**.
 1. Expand **adventureworks**, and then expand **Tables**.
-1. Right-click the **contact** table, click **Select Rows - Limit 1000**, and then, in the **contact** query window, click **Limit to 1000 rows** and click **Don't Limit**.
-1. Click **Execute** to run the query. It should return 19972 rows.
-1. In the list of tables, right-click the **Employee** table, and click **Select rows**.
-1. Click **Execute** to run the query. It should return 290 rows.
+1. Right-click the **contact** table, select **Select Rows - Limit 1000**, and then, in the **contact** query window, select **Limit to 1000 rows** and select **Don't Limit**.
+1. Select **Execute** to run the query. It should return 19972 rows.
+1. In the list of tables, right-click the **Employee** table, and select **Select rows**.
+1. Select **Execute** to run the query. It should return 290 rows.
 1. Spend a couple of minutes browsing the data for the other tables in the various tables in the database.
 
 ### Task 2: Run a sample application that queries the database
 
-1. On the **LON-DEV-01** virtual machine, on the favorites bar, click **Show Applications** and then type **term**.
-1. Click **Terminal** to open a terminal window.
+1. On the **LON-DEV-01** virtual machine, on the favorites bar, select **Show Applications** and then type **term**.
+1. Select **Terminal** to open a terminal window.
 1. In the terminal window, download the sample code for the lab. If prompted, enter **Pa55w.rd** for the password:
 
    ```bash
@@ -203,10 +203,10 @@ Now that you have an idea of the data in the adventureworks database, you can mi
 
 1. Close the *mysql* utility with the **quit** command.
 1. Switch to the **MySQL Workbench** tool.
-1. On the **Database** menu, click **Manage Connections**, and click **New**.
-1. Click the **Connection** tab.
+1. On the **Database** menu, select **Manage Connections**, and select **New**.
+1. Select the **Connection** tab.
 1. In **Connection name** type **MySQL on Azure VM**
-1. Enter the following details, and then click **Test connection**:
+1. Enter the following details, and then select **Test connection**:
 
     | Property  | Value  |
     |---|---|
@@ -215,9 +215,9 @@ Now that you have an idea of the data in the adventureworks database, you can mi
     | Username | azureuser |
     | Default Schema | adventureworks |
 
-1. At the password prompt, type **Pa55w.rd** and click **OK**.
-1. Click **OK** and click **Close**.
-1. On the **Database** menu, click **Connect to Database**, select **MySQL on Azure VM**, and then click **OK**
+1. At the password prompt, type **Pa55w.rd** and select **OK**.
+1. Select **OK** and select **Close**.
+1. On the **Database** menu, select **Connect to Database**, select **MySQL on Azure VM**, and then select **OK**
 1. In **adventureworks** browse the tables in the database. The tables should be the same as those in the on-premises database.
 
 ### Task 5: Reconfigure and test the sample application against the database on the Azure virtual machine
@@ -324,11 +324,11 @@ In this exercise, you'll perform the following tasks:
 ### Task 2. Create the Azure Database for MySQL server and database
 
 1. Switch to the Azure portal.
-1. Click **+ Create a resource**.
+1. Select **+ Create a resource**.
 1. In the **Search the Marketplace** box, type **Azure Database for MySQL**, and press enter.
-1. On the **Azure Database for MySQL** page, click **Create**.
-1. On the **Select Azure Database for MySQL deployment option** page, under **Single server** click **Create**.
-1. On the **Create MySQL server** page, enter the following details, and then click **Review + create**:
+1. On the **Azure Database for MySQL** page, select **Create**.
+1. On the **Select Azure Database for MySQL deployment option** page, under **Single server** select **Create**.
+1. On the **Create MySQL server** page, enter the following details, and then select **Review + create**:
 
     | Property  | Value  |
     |---|---|
@@ -338,16 +338,16 @@ In this exercise, you'll perform the following tasks:
     | Data source | None |
     | Location | Select your nearest location |
     | Version | 5.7 |
-    | Compute + storage | Click **Configure server**, select the **Basic** pricing tier, and then click **OK** |
+    | Compute + storage | Select **Configure server**, select the **Basic** pricing tier, and then select **OK** |
     | Admin username | awadmin |
     | Password | Pa55w.rdDemo |
     | Confirm password | Pa55w.rdDemo |
     
-1. On the **Review + create** page, click **Create**. Wait for the service to be created before continuing.
-1. When the service has been created, go to the page for the service in the portal, and click **Connection security**.
+1. On the **Review + create** page, select **Create**. Wait for the service to be created before continuing.
+1. When the service has been created, go to the page for the service in the portal, and select **Connection security**.
 1. On the **Connection security page**, set **Allow access to Azure services** to **Yes**.
 1. In the list of firewall rules, add a rule named **VM**, and set the **START IP ADDRESS** and **END IP ADDRESS** to the IP address of the virtual machine running the MySQL server.
-1. Click **Add current client IP address**, to enable the **LON-DEV-01** virtual machine acting as the on-premises server to connect to Azure Database for MySQL. You will need this access later, when running the reconfigured client application.
+1. Select **Add current client IP address**, to enable the **LON-DEV-01** virtual machine acting as the on-premises server to connect to Azure Database for MySQL. You will need this access later, when running the reconfigured client application.
 1. **Save**, and wait for the firewall rules to be updated.
 1. At the Cloud Shell prompt, run the following command to create a new database in your Azure Database for MySQL service. Replace *[nnn]* with the suffix you used when you created the Azure Database for MySQL service. Replace *[resource group]* with the name of the resource group you specified for the service:
 
@@ -402,13 +402,13 @@ In this exercise, you'll perform the following tasks:
 ### Task 4.  Perform an online migration using the Database Migration Service
 
 1. Switch back to the Azure portal.
-1. In the menu on the left, click **Subscriptions**, and then click your subscription.
-1. On your subscription page, under **Settings**, click **Resource providers**.
-1. In the **Filter by name** box, type **DataMigration**, and then click **Microsoft.DataMigration**.
-1. If the **Microsoft.DataMigration** isn't registered, click **Register**, and wait for the **Status** to change to **Registered**. It might be necessary to click **Refresh** to see the status change.
-1. Click **Create a resource**, in the **Search the Marketplace** box type **Azure Database Migration Service**, and then press Enter.
-1. On the **Azure Database Migration Service** page, click **Create**.
-1. On the **Create Migration Service** page, enter the following details, and then click **Next: Networking \>\>**.
+1. In the menu on the left, select **Subscriptions**, and then select your subscription.
+1. On your subscription page, under **Settings**, select **Resource providers**.
+1. In the **Filter by name** box, type **DataMigration**, and then select **Microsoft.DataMigration**.
+1. If the **Microsoft.DataMigration** isn't registered, select **Register**, and wait for the **Status** to change to **Registered**. It might be necessary to select **Refresh** to see the status change.
+1. Select **Create a resource**, in the **Search the Marketplace** box type **Azure Database Migration Service**, and then press Enter.
+1. On the **Azure Database Migration Service** page, select **Create**.
+1. On the **Create Migration Service** page, enter the following details, and then select **Next: Networking \>\>**.
 
     | Property  | Value  |
     |---|---|
@@ -420,10 +420,10 @@ In this exercise, you'll perform the following tasks:
     | Pricing tier | Premium, with 4 vCores |
 
 1. On the **Networking** page, select the **MySQLvnet/mysqlvmSubnet** virtual network. This network was created as part of the setup.
-1. Click **Review + create** and then click **Create**. Wait while the Database Migration Service is created. This will take a few minutes.
+1. Select **Review + create** and then select **Create**. Wait while the Database Migration Service is created. This will take a few minutes.
 1. In the Azure portal, go to the page for your Database Migration Service.
-1. Click **New Migration Project**.
-1. On the **New migration project** page, enter the following details, and then click **Create and run activity**.
+1. Select **New Migration Project**.
+1. On the **New migration project** page, enter the following details, and then select **Create and run activity**.
 
     | Property  | Value  |
     |---|---|
@@ -432,7 +432,7 @@ In this exercise, you'll perform the following tasks:
     | Target Database for MySQL | Azure Database for MySQL |
     | Choose type of activity | Online data migration |
 
-1. When the **Migration Wizard** starts, on the **Select source** page, enter the following details, and then click **Next: Select target\>\>**.
+1. When the **Migration Wizard** starts, on the **Select source** page, enter the following details, and then select **Next: Select target\>\>**.
 
     | Property  | Value  |
     |---|---|
@@ -441,7 +441,7 @@ In this exercise, you'll perform the following tasks:
     | User Name | azureuser |
     | Password | Pa55w.rd |
 
-1. On the **Select target** page, enter the following details, and then click **Next: Select databases\>\>**.
+1. On the **Select target** page, enter the following details, and then select **Next: Select databases\>\>**.
 
     | Property  | Value  |
     |---|---|
@@ -449,17 +449,17 @@ In this exercise, you'll perform the following tasks:
     | User Name | awadmin@adventureworks[nnn] |
     | Password | Pa55w.rdDemo |
 
-1. On the **Select databases** page, ensure that both the **Source Database** and the **Target Database** are set to **adventureworks** and then click **Next: Configure migration settings**.
-1. On the **Configure migration settings** page, click **Next: Summary\>\>**.
-1. On the **Migration summary** page, in the **Activity name** box type **AdventureWorks_Migration_Activity**, and then click **Start migration**.
-1. On the **AdventureWorks_Migration_Activity** page, click **Refresh** at 15 second intervals. You will see the status of the migration operation as it progresses. Wait until the **MIGRATION DETAILS** column changes to **Ready to cutover**.
+1. On the **Select databases** page, ensure that both the **Source Database** and the **Target Database** are set to **adventureworks** and then select **Next: Configure migration settings**.
+1. On the **Configure migration settings** page, select **Next: Summary\>\>**.
+1. On the **Migration summary** page, in the **Activity name** box type **AdventureWorks_Migration_Activity**, and then select **Start migration**.
+1. On the **AdventureWorks_Migration_Activity** page, select **Refresh** at 15 second intervals. You will see the status of the migration operation as it progresses. Wait until the **MIGRATION DETAILS** column changes to **Ready to cutover**.
 
 ### Task 5. Modify data, and cutover to the new database
 
 1. Return to the **AdventureWorks_Migration_Activity** page in the Azure portal.
-1. Click the **adventureworks** database.
+1. Select the **adventureworks** database.
 1. On the **adventureworks** page, verify that the status for all tables is marked as **COMPLETED**.
-1. Click **Incremental data sync**. Verify that the status for every table is marked as **Syncing**.
+1. Select **Incremental data sync**. Verify that the status for every table is marked as **Syncing**.
 1. Switch back to the Cloud Shell.
 1. Run the following command to connect to the **adventureworks** database running using MySQL on the virtual machine:
 
@@ -476,9 +476,9 @@ In this exercise, you'll perform the following tasks:
     ```
 
 1. Close the *mysql* utility with the **quit** command.
-1. Return to the **adventureworks** page in the Azure portal, and then click **Refresh**. Scroll to the page for the *salesorderheader* and *salesorderdetail* tables. Verify that the *salesorderheader* table indicates that 3 rows have been deleted, and 29 rows have been removed from the **sales.salesorderdetail** table. If there are no updates applied, check that there are **Pending changes** for the database.
-1. Click **Start cutover**.
-1. On the **Complete cutover** page, select **Confirm**, and then click **Apply**. Wait until the status changes to **Completed**.
+1. Return to the **adventureworks** page in the Azure portal, and then select **Refresh**. Scroll to the page for the *salesorderheader* and *salesorderdetail* tables. Verify that the *salesorderheader* table indicates that 3 rows have been deleted, and 29 rows have been removed from the **sales.salesorderdetail** table. If there are no updates applied, check that there are **Pending changes** for the database.
+1. Select **Start cutover**.
+1. On the **Complete cutover** page, select **Confirm**, and then select **Apply**. Wait until the status changes to **Completed**.
 1. Return to the Cloud Shell.
 1. Run the following command to connect to the **azureadventureworks** database running using your Azure Database for MySQL service:
 
@@ -501,8 +501,8 @@ In this exercise, you'll perform the following tasks:
 
 1. Return to the virtual machine acting as your on-premises computer
 1. Switch to the **MySQL Workbench** tool.
-1. On the **Database** menu, click **Connect to database**
-1. Enter the following details, and then click **OK**:
+1. On the **Database** menu, select **Connect to database**
+1. Enter the following details, and then select **OK**:
 
     | Property  | Value  |
     |---|---|

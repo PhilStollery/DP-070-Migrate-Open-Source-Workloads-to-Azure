@@ -69,20 +69,20 @@ In this exercise, you'll perform the following tasks:
 
     This virtual machine simulates your on-premises environment. It is running a PostgreSQL server that is hosting the AdventureWorks database that you need to migrate.
 
-1. On the **LON-DEV-01** virtual machine running in the classroom environment, in the **Favorites** bar on the left-hand side of the screen, click the **pgAdmin4** utility.
-1. In the **Unlock Saved Password** dialog box, enter the password **Pa55w.rd**, and then click **OK**.
+1. On the **LON-DEV-01** virtual machine running in the classroom environment, in the **Favorites** bar on the left-hand side of the screen, select the **pgAdmin4** utility.
+1. In the **Unlock Saved Password** dialog box, enter the password **Pa55w.rd**, and then select **OK**.
 1. In the **pgAdmin4** window, expand **Servers**, expand **LON-DEV-01**, expand **Databases**, expand **adventureworks**, and then expand **Schemas**.
 1. In the **sales** schema, expand **Tables**.
-1. Right-click the **salesorderheader** table, click **Scripts**, and then click **SELECT Script**.
+1. Right-click the **salesorderheader** table, select **Scripts**, and then select **SELECT Script**.
 1. Press **F5** to run the query. It should return 31465 rows.
-1. In the list of tables, right-click the **salesorderdetail** table, click **Scripts**, and then click **Select Script**.
+1. In the list of tables, right-click the **salesorderdetail** table, select **Scripts**, and then select **Select Script**.
 1. Press **F5** to run the query. It should return 121317 rows.
 1. Spend a couple of minutes browsing the data for the other tables in the various schemas in the database.
 
 ### Task 2: Run a sample application that queries the database
 
-1. On the **LON-DEV-01** virtual machine, on the favorites bar, click **Show Applications** and then type **term**.
-1. Click **Terminal** to open a terminal window.
+1. On the **LON-DEV-01** virtual machine, on the favorites bar, select **Show Applications** and then type **term**.
+1. Select **Terminal** to open a terminal window.
 1. In the terminal window, download the sample code for the demonstration. If prompted, enter **Pa55w.rd** for the password:
 
    ```bash
@@ -180,9 +180,9 @@ Now that you have an idea of the data in the adventureworks database, you can mi
 
 1. Close the *psql* utility with the **\q** command.
 1. Switch to the **pgAdmin4** tool.
-1. In the left-pane, right-click **Servers**, click **Create**, and then click **Server**.
-1. In the **Create - Server** dialog box, on the **General** tab, in the **Name** box, enter **Virtual Machine**, and then click the **Connection** tab.
-1. Enter the following details, and then click **Save**:
+1. In the left-pane, right-click **Servers**, select **Create**, and then select **Server**.
+1. In the **Create - Server** dialog box, on the **General** tab, in the **Name** box, enter **Virtual Machine**, and then select the **Connection** tab.
+1. Enter the following details, and then select **Save**:
 
     | Property  | Value  |
     |---|---|
@@ -356,11 +356,11 @@ In this exercise, you'll perform the following tasks:
 ## Task 2. Create the Azure Database for PostgreSQL server and database
 
 1. Switch to the Azure portal.
-1. Click **+ Create a resource**.
+1. Select **+ Create a resource**.
 1. In the **Search the Marketplace** box, type **Azure Database for PostgreSQL**, and press enter.
-1. On the **Azure Database for PostgreSQL** page, click **Create**.
-1. On the **Select Azure Database for PostgreSQL deployment option** page, in the **Single server** box, click **Create**.
-1. On the **Single server** page, enter the following details, and then click **Review + create**:
+1. On the **Azure Database for PostgreSQL** page, select **Create**.
+1. On the **Select Azure Database for PostgreSQL deployment option** page, in the **Single server** box, select **Create**.
+1. On the **Single server** page, enter the following details, and then select **Review + create**:
 
     | Property  | Value  |
     |---|---|
@@ -370,16 +370,16 @@ In this exercise, you'll perform the following tasks:
     | Data source | None |
     | Location | Select your nearest location |
     | Version | 10 |
-    | Compute + storage | Click **Configure server**, select the **Basic** pricing tier, and then click **OK** |
+    | Compute + storage | Select **Configure server**, select the **Basic** pricing tier, and then select **OK** |
     | Admin username | awadmin |
     | Password | Pa55w.rdDemo |
     | Confirm password | Pa55w.rdDemo |
 
-1. On the **Review + create** page, click **Create**. Wait for the service to be created before continuing.
-1. When the service has been created, go to the page for the service in the portal, and click **Connection security**.
+1. On the **Review + create** page, select **Create**. Wait for the service to be created before continuing.
+1. When the service has been created, go to the page for the service in the portal, and select **Connection security**.
 1. On the **Connection security page**, set **Allow access to Azure services** to **Yes**.
 1. In the list of firewall rules, add a rule named **VM**, and set the **START IP ADDRESS** and **END IP ADDRESS** to the IP address of the virtual machine running the PostgreSQL server you created earlier.
-1. Click **Add current client IP address**, to enable the **LON-DEV-01** virtual machine acting as the on-premises server to connect to Azure Database for PostgreSQL. You will need this access later, when running the reconfigured client application.
+1. Select **Add current client IP address**, to enable the **LON-DEV-01** virtual machine acting as the on-premises server to connect to Azure Database for PostgreSQL. You will need this access later, when running the reconfigured client application.
 1. **Save**, and wait for the firewall rules to be updated.
 1. At the Cloud Shell prompt, run the following command to create a new database in your Azure Database for PostgreSQL service. Replace *[nnn]* with the suffix you used when you created the Azure Database for PostgreSQL service. Replace *[resource group]* with the name of the resource group you specified for the service:
 
@@ -485,13 +485,13 @@ In this exercise, you'll perform the following tasks:
 ## Task 4.  Perform an online migration using the Database Migration Service
 
 1. Switch back to the Azure portal.
-1. Click **All services**, click **Subscriptions**, and then click your subscription.
-1. On your subscription page, under **Settings**, click **Resource providers**.
-1. In the **Filter by name** box, type **DataMigration**, and then click **Microsoft.DataMigration**.
-1. If the **Microsoft.DataMigration** isn't registered, click **Register**, and wait for the **Status** to change to **Registered**. It might be necessary to click **Refresh** to see the status change.
-1. Click **Create a resource**, in the **Search the Marketplace** box type **Azure Database Migration Service**, and then press Enter.
-1. On the **Azure Database Migration Service** page, click **Create**.
-1. On the **Create Migration Service** page, enter the following details, and then click **Next: Networking\>\>**.
+1. Select **All services**, select **Subscriptions**, and then select your subscription.
+1. On your subscription page, under **Settings**, select **Resource providers**.
+1. In the **Filter by name** box, type **DataMigration**, and then select **Microsoft.DataMigration**.
+1. If the **Microsoft.DataMigration** isn't registered, select **Register**, and wait for the **Status** to change to **Registered**. It might be necessary to select **Refresh** to see the status change.
+1. Select **Create a resource**, in the **Search the Marketplace** box type **Azure Database Migration Service**, and then press Enter.
+1. On the **Azure Database Migration Service** page, select **Create**.
+1. On the **Create Migration Service** page, enter the following details, and then select **Next: Networking\>\>**.
 
     | Property  | Value  |
     |---|---|
@@ -503,10 +503,10 @@ In this exercise, you'll perform the following tasks:
     | Pricing tier | Premium, with 4 vCores |
 
 1. On the **Networking** page, select the **postgresqlvnet/posgresqlvmSubnet** virtual network. This network was created as part of the setup.
-1. Click **Review + create** and then click **Create**. Wait while the Database Migration Service is created. This will take a few minutes.
+1. Select **Review + create** and then select **Create**. Wait while the Database Migration Service is created. This will take a few minutes.
 1. In the Azure portal, go to the page for your Database Migration Service.
-1. Click **New Migration Project**.
-1. On the **New migration project** page, enter the following details, and then click **Create and run activity**.
+1. Select **New Migration Project**.
+1. On the **New migration project** page, enter the following details, and then select **Create and run activity**.
 
     | Property  | Value  |
     |---|---|
@@ -515,7 +515,7 @@ In this exercise, you'll perform the following tasks:
     | Target Database for PostgreSQL | Azure Database for PostgreSQL |
     | Choose type of activity | Online data migration |
 
-1. When the **Migration Wizard** starts, on the **Select source** page, enter the following details, and then click **Next: Select target\>\>**.
+1. When the **Migration Wizard** starts, on the **Select source** page, enter the following details, and then select **Next: Select target\>\>**.
 
     | Property  | Value  |
     |---|---|
@@ -527,7 +527,7 @@ In this exercise, you'll perform the following tasks:
     | Trust server certificate | Selected |
     | Encrypt connection | Selected |
 
-1. On the **Select target** page, enter the following details, and then click **Next: Select databases\>\>**.
+1. On the **Select target** page, enter the following details, and then select **Next: Select databases\>\>**.
 
     | Property  | Value  |
     |---|---|
@@ -537,11 +537,11 @@ In this exercise, you'll perform the following tasks:
     | User Name | azureuser@adventureworks[nnn] |
     | Password | Pa55w.rd |
 
-1. on the **Select databases** page, select the **adventureworks** database and map it to **azureadventureworks**. Deselect the **postgres** database. Click **Next: Select tables\>\>**.
-1. On the **Select tables** page, click **Next: Configure migration settings\>\>**.
-1. On the **Configure migration settings** page, expand the **adventureworks** dropdown, expand the **Advanced online migration settings dropdown**, verify that **Maximum number of instances to load in parallel** is set to 5, and then click **Next: Summary\>\>**.
-1. On the **Summary** page, in the **Activity name** box type **AdventureWorks_Migration_Activity**, and then click **Start migration**.
-1. On the **AdventureWorks_Migration_Activity** page, click **Refresh** at 15 second intervals. You will see the status of the migration operation as it progresses. Wait until the **MIGRATION DETAILS** column changes to **Ready to cutover**.
+1. on the **Select databases** page, select the **adventureworks** database and map it to **azureadventureworks**. Deselect the **postgres** database. Select **Next: Select tables\>\>**.
+1. On the **Select tables** page, select **Next: Configure migration settings\>\>**.
+1. On the **Configure migration settings** page, expand the **adventureworks** dropdown, expand the **Advanced online migration settings dropdown**, verify that **Maximum number of instances to load in parallel** is set to 5, and then select **Next: Summary\>\>**.
+1. On the **Summary** page, in the **Activity name** box type **AdventureWorks_Migration_Activity**, and then select **Start migration**.
+1. On the **AdventureWorks_Migration_Activity** page, select **Refresh** at 15 second intervals. You will see the status of the migration operation as it progresses. Wait until the **MIGRATION DETAILS** column changes to **Ready to cutover**.
 1. Switch back to the Cloud Shell.
 1. Run the following command to recreate the foreign keys in the **azureadventureworks** database. You generated the **addkeys.sql** script earlier:
 
@@ -564,7 +564,7 @@ In this exercise, you'll perform the following tasks:
 ## Task 5. Modify data, and cut over to the new database
 
 1. Return to the **AdventureWorks_Migration_Activity** page in the Azure portal.
-1. Click the **adventureworks** database.
+1. Select the **adventureworks** database.
 1. On the **adventureworks** page, verify that the **Full load completed** value is **66** and that all other values are **0**.
 1. Switch back to the Cloud Shell.
 1. Run the following command to connect to the **adventureworks** database running using PostgreSQL on the virtual machine:
@@ -582,9 +582,9 @@ In this exercise, you'll perform the following tasks:
     ```
 
 1. Close the *psql* utility with the **\q** command.
-1. Return to the **adventureworks** page in the Azure portal, and click **Refresh**. Verify that 32 changes have been applied.
-1. Click **Start Cutover**.
-1. On the **Complete cutover** page, select **Confirm**, and then click **Apply**. Wait until the status changes to **Completed**.
+1. Return to the **adventureworks** page in the Azure portal, and select **Refresh**. Verify that 32 changes have been applied.
+1. Select **Start Cutover**.
+1. On the **Complete cutover** page, select **Confirm**, and then select **Apply**. Wait until the status changes to **Completed**.
 1. Return to the Cloud Shell.
 1. Run the following command to connect to the **azureadventureworks** database running using your Azure Database for PostgreSQL service:
 
@@ -614,9 +614,9 @@ In this exercise, you'll perform the following tasks:
 
 1. Return to the virtual machine acting as your on-premises computer
 1. Switch to the **pgAdmin4** tool.
-1. In the left-pane, right-click **Servers**, click **Create**, and then click **Server**.
-1. In the **Create - Server** dialog box, on the **General** tab, in the **Name** box, enter **Azure Database for PostgreSQL**, and then click the **Connection** tab.
-1. Enter the following details, and then click the **SSL** tab:
+1. In the left-pane, right-click **Servers**, select **Create**, and then select **Server**.
+1. In the **Create - Server** dialog box, on the **General** tab, in the **Name** box, enter **Azure Database for PostgreSQL**, and then select the **Connection** tab.
+1. Enter the following details, and then select the **SSL** tab:
 
     | Property  | Value  |
     |---|---|
@@ -629,7 +629,7 @@ In this exercise, you'll perform the following tasks:
     | Role | *leave blank* |
     | Service | *Leave blank* |
 
-1. On the **SSL** tab, set **SSL mode** to **Require**, and then click **Save**.
+1. On the **SSL** tab, set **SSL mode** to **Require**, and then select **Save**.
 1. In the left pane of the **pgAdmin4** window, under **Servers**, expand **Azure Database for PostgreSQL**.
 1. Expand **Databases**, expand **azureadventureworks**, and then browse the schemas and tables in the database. The tables should be the same as those in the on-premises database.
 
